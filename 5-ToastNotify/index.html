@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast Notify</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <div class="buttons">
+        <button onclick="showMessage(successMsg)" class="btn">success</button>
+        <button onclick="showMessage(errorMsg)" class="btn">error</button>
+        <button onclick="showMessage(invalidMsg)" class="btn">invalid</button>
+    </div>
+
+    <div id="toast-box"></div>
+
+    <script>
+        const toastBox = document.getElementById("toast-box")
+        const successMsg = '<i class="fa-solid fa-circle-check"></i> Successfully submited'
+        const errorMsg = "<i class='fa-solid fa-circle-xmark'></i> Fix the god damn error"
+        const invalidMsg = "<i class='fa-solid fa-circle-exclamation'></i> Invalid input argument"
+
+        function showMessage(message) {
+            let toast = document.createElement("div")
+            toast.classList.add('toast')
+            toast.innerHTML = message
+            toastBox.appendChild(toast)
+
+            if (message.includes("error")) {
+                toast.classList.add("error")
+            }
+
+            if (message.includes("Invalid")) {
+                toast.classList.add("invalid")
+            }
+
+            setTimeout(() => {
+                toast.remove()
+            }, 4000)
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>
